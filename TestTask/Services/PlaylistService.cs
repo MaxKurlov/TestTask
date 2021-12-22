@@ -43,6 +43,7 @@ namespace TestTask.Services
             HtmlNodeCollection nodes = htmlDoc.DocumentNode.SelectNodes(@"//small[@itemprop='name']");
             var divsartist = htmlDoc.DocumentNode.SelectSingleNode(@"//a[@data-masked-href='']");
             string artist = divsartist.InnerHtml;
+            artist = artist.Replace("&amp;", "&");
             List<Track> items = new List<Track>();
             
             foreach (var tag in nodes)

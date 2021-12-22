@@ -28,19 +28,21 @@
       <TextBlock Name="playName"/>
       <Label>Track List:</Label>
       <ListBox Name="songs"
-          Grid.Column="1" Grid.Row="1"
+          Grid.Column="0" Grid.Row="1"
           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-          Items="{Binding MyItems}">
+          Items="{Binding MyItems}"
+          Height="400">
         <ListBox.ItemTemplate>
           <DataTemplate>
             <Grid>
               <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
               </Grid.RowDefinitions>
               <Border Grid.Row="1" Classes="title">
                 <Grid ColumnDefinitions="*, 0.4*" Margin="4">
                   <TextBlock Grid.Column="0" FontSize="12" Text="{Binding TrackName}" />
-                  <TextBlock Grid.Column="1" Padding="10,0,0,0" FontSize="12" Text="{Binding ArtistName}i" />
+                  <TextBlock Grid.Column="1" Padding="10,0,0,0" FontSize="12" Text="{Binding ArtistName}" />
                 </Grid>
               </Border>
             </Grid>
