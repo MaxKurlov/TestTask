@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TestTask.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="TestTask.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TestTask">
+
+  <Design.DataContext>
+    <vm:MainWindowViewModel/>
+  </Design.DataContext>
+  <StackPanel>
+    <Label>Link to the playlist:</Label>
+    <TextBox Name="playlistLink" Width="1200" HorizontalAlignment="Left"></TextBox>
+    <Button Content="Parse playlist" Name="btn1"/>
+    
+    <StackPanel Name="result" IsVisible="False">
+      <Label>Avatar image:</Label>
+      <Image
+        HorizontalAlignment="Left"
+        Width="150"
+        Height="150"
+        Name="Poster"></Image>
+
+      <Label>Playlist name:</Label>
+      <TextBlock Name="playName"/>
+      <Label>Track List:</Label>
+      <ListBox Name="songs"
+          Grid.Column="1" Grid.Row="1"
+          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+          Items="{Binding MyItems}">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <Grid>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+              </Grid.RowDefinitions>
+              <Border Grid.Row="1" Classes="title">
+                <Grid ColumnDefinitions="*, 0.4*" Margin="4">
+                  <TextBlock Grid.Column="0" FontSize="12" Text="{Binding TrackName}" />
+                  <TextBlock Grid.Column="1" Padding="10,0,0,0" FontSize="12" Text="{Binding ArtistName}i" />
+                </Grid>
+              </Border>
+            </Grid>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </StackPanel>
+  </StackPanel>
+</Window>
